@@ -6,7 +6,6 @@
 | | | | '_ \| |  _ \ / _` / __|/ _ \
 | |_| | | | | | |_) | (_| \__ \  __/
  \___/|_| |_|_|____/ \__,_|___/\___|
-                                    
 ```
 
 UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参考借鉴了CMU15-445课程的[BusTub](https://github.com/cmu-db/bustub)和Stanford CS346课程的[RedBase](https://web.stanford.edu/class/cs346/2015/redbase.html)以及
@@ -19,6 +18,7 @@ UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参�
  - Programming language: C/C++ (C++17, mostly)
  - Building Tools: CMake & Make
  - Editor: VSCode
+ - Other Dependencies: flex, bison, readline
 
 ## Acknowledgement
 
