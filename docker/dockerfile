@@ -1,0 +1,5 @@
+FROM ubuntu:latest
+
+RUN apt update -y && \
+    apt upgrade -y && \
+    apt install -y build-essential cmake bison flex libreadline-dev nano vim
