@@ -22,7 +22,7 @@ UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参�
 
 ## 文档快速查找
 
-- [环境配置文档]()
+- [环境配置文档](./docs/base-env-setup.md)
 - [如何编译UniBase]()
 - [实验报告模板](./misc/lab-report-template.doc)
 - [实验一：存储管理实验文档]()
