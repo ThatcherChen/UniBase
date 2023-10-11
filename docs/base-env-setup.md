@@ -15,7 +15,7 @@ docker pull cc0de/base-env:1.0
 如果要运行这个环境，通过这行命令启动容器：
 
 ```
-docker run -d --name base-env -v ${local-code-path}:/mnt/UniBase cc0de/base-env
+docker run -td --name base-env -v ${local-code-path}:/mnt/UniBase cc0de/base-env
 ```
 
 其中${local-code-path}请替换为你本地的代码路径。
