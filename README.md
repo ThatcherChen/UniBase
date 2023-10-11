@@ -8,10 +8,9 @@
  \___/|_| |_|_|____/ \__,_|___/\___|
 ```
 
-UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参考借鉴了CMU15-445课程的[BusTub](https://github.com/cmu-db/bustub)和Stanford CS346课程的[RedBase](https://web.stanford.edu/class/cs346/2015/redbase.html)以及
-中国人民大学的[RucBase](https://github.com/ruc-deke/rucbase-lab)。
+UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参考借鉴了CMU15-445课程的[BusTub](https://github.com/cmu-db/bustub)和Stanford CS346课程的[RedBase](https://web.stanford.edu/class/cs346/2015/redbase.html)以及中国人民大学的[RucBase](https://github.com/ruc-deke/rucbase-lab)。
 
-## 推荐实验环境
+## :hammer_and_wrench:推荐实验环境
 
  - OS: Ubuntu 18.04+ (x64)
  - Compiler: GCC 7.1+ (Clang supporting C++17 might work)
@@ -20,7 +19,7 @@ UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参�
  - Editor: VSCode
  - Other Dependencies: flex, bison, readline
 
-## 文档快速查找
+## :mag:文档快速查找
 
 - [环境配置文档](./docs/base-env-setup.md)
 - [如何编译UniBase]()
@@ -29,6 +28,12 @@ UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参�
 - [实验二：索引管理实验文档]()
 - [实验三：查询执行实验文档]()
 - [实验四：并发控制实验文档]()
+
+## :sparkles:特别收录
+
+以下内容是每届同学的一些贡献，特此收录
+
+- [快捷克隆并启动docker容器脚本](./misc/quick-start.bat) - Contributed by 敖翔, 2022
 
 ## Acknowledgement
 
