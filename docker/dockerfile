@@ -6,9 +6,6 @@ RUN apt update -y && \
     apt upgrade -y && \
     apt install -y build-essential cmake bison flex libreadline-dev git && \
     git clone https://github.com/google/googletest.git && \
-    cd googletest && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && make install && \
-    rm -rf googletest
+    mkdir googletest/build && cd googletest/build && \
+    cmake .. && make && make install && \
+    rm -rf /googletest
