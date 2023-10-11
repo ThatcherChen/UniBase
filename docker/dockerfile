@@ -1,5 +1,14 @@
 FROM ubuntu:latest
 
+# Install depandencies and clean
+
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -y build-essential cmake bison flex libreadline-dev nano vim
+    apt install -y build-essential cmake bison flex libreadline-dev git && \
+    git clone https://github.com/google/googletest.git && \
+    cd googletest && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && make install && \
+    rm -rf googletest
