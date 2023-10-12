@@ -26,9 +26,9 @@ UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参�
 - [编译运行测试文档](./docs/compile-run-test.md)
 - [实验报告模板](./misc/lab-report-template.doc)
 - [实验一：存储管理实验文档](./docs/lab1-doc.md)
-- [实验二：索引管理实验文档]()
-- [实验三：查询执行实验文档]()
-- [实验四：并发控制实验文档]()
+- [实验二：索引管理实验文档](./docs/lab2-doc.md)
+- [实验三：查询执行实验文档](./docs/lab3-doc.md)
+- [实验四：并发控制实验文档](./docs/lab4-doc.md)
 
 ## :sparkles:特别收录
 
