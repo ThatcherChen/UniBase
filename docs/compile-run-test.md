@@ -54,4 +54,19 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 make disk_manager_test
 ```
 
-系统会自动编译你的代码和测试代码并进行测试。
+系统会自动编译你的代码和测试代码，只需要执行相应的二进制文件即可：
+
+```
+./bin/disk_manager_test
+```
+
+系统会输出你的评测情况：
+
+```
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from DiskManagerTest
+[ RUN      ] DiskManagerTest.FileOperation
+disk_manager_test: /mnt/UniBase/src/test/storage/disk_manager_test.cpp:74: virtual void DiskManagerTest_FileOperation_Test::TestBody(): Assertion `false' failed.
+Aborted
+```
