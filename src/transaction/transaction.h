@@ -4,6 +4,7 @@
 #include <deque>
 #include <string>
 #include <thread>
+#include <memory>
 #include <unordered_set>
 
 #include "txn_defs.h"
