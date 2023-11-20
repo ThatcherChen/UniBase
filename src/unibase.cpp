@@ -36,6 +36,7 @@ pthread_mutex_t *buffer_mutex;
 pthread_mutex_t *sockfd_mutex;
 
 static jmp_buf jmpbuf;
+
 void sigint_handler(int signo) {
     should_exit = true;
     log_manager->flush_log_to_disk();
@@ -44,7 +45,7 @@ void sigint_handler(int signo) {
 }
 
 // 判断当前正在执行的是显式事务还是单条SQL语句的事务，并更新事务ID
-void SetTransaction(txn_id_t *txn_id, Context *context) {
+void set_transaction(txn_id_t *txn_id, Context *context) {
     context->txn_ = txn_manager->get_transaction(*txn_id);
     if(context->txn_ == nullptr || context->txn_->get_state() == TransactionState::COMMITTED ||
         context->txn_->get_state() == TransactionState::ABORTED) {
@@ -104,7 +105,7 @@ void *client_handler(void *sock_fd) {
 
         // 开启事务，初始化系统所需的上下文信息（包括事务对象指针、锁管理器指针、日志管理器指针、存放结果的buffer、记录结果长度的变量）
         Context *context = new Context(lock_manager.get(), log_manager.get(), nullptr, data_send, &offset);
-        SetTransaction(&txn_id, context);
+        set_transaction(&txn_id, context);
 
         // 用于判断是否已经调用了yy_delete_buffer来删除buf
         bool finish_analyze = false;
@@ -189,9 +190,13 @@ void start_server() {
     int fd_temp;
     struct sockaddr_in s_addr_in {};
 
-    // 初始化连接
-    sockfd_server = socket(AF_INET, SOCK_STREAM, 0);  // ipv4,TCP
-    assert(sockfd_server != -1);
+    // 初始化连接 IPv4 TCP
+    sockfd_server = socket(AF_INET, SOCK_STREAM, 0);
+    while ((sockfd_server = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        std::cout << "Fail to create socket on the host, retry after 2s..." << std::endl;
+        sleep(2);
+    }
+
     int val = 1;
     setsockopt(sockfd_server, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val));
 
@@ -200,16 +205,15 @@ void start_server() {
     s_addr_in.sin_family = AF_INET;
     s_addr_in.sin_addr.s_addr = htonl(INADDR_ANY);
     s_addr_in.sin_port = htons(SOCK_PORT);
-    fd_temp = bind(sockfd_server, (struct sockaddr *)(&s_addr_in), sizeof(s_addr_in));
-    if (fd_temp == -1) {
-        std::cout << "Bind error!" << std::endl;
-        exit(1);
+
+    while ((fd_temp = bind(sockfd_server, (struct sockaddr *)(&s_addr_in), sizeof(s_addr_in))) == -1) {
+        std::cout << "Fail to bind on the socket on the host, retry after 2s..." << std::endl;
+        sleep(2);
     }
 
-    fd_temp = listen(sockfd_server, MAX_CONN_LIMIT);
-    if (fd_temp == -1) {
-        std::cout << "Listen error!" << std::endl;
-        exit(1);
+    while ((fd_temp = listen(sockfd_server, MAX_CONN_LIMIT)) == -1) {
+        std::cout << "Fail to listen on the socket on the host, retry after 2s..." << std::endl;
+        sleep(2);
     }
 
     while (!should_exit) {
@@ -250,6 +254,7 @@ void start_server() {
 }
 
 int main(int argc, char **argv) {
+
     if (argc != 2) {
         // 需要指定数据库名称
         std::cerr << "Usage: " << argv[0] << " <database>" << std::endl;
@@ -263,6 +268,7 @@ int main(int argc, char **argv) {
                      "\n";
         // Database name is passed by args
         std::string db_name = argv[1];
+
         if (!sm_manager->is_dir(db_name)) {
             // Database not found, create a new one
             sm_manager->create_db(db_name);
