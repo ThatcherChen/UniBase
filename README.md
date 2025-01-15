@@ -8,7 +8,7 @@
  \___/|_| |_|_|____/ \__,_|___/\___|
 ```
 
-UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参考借鉴了CMU15-445课程的[BusTub](https://github.com/cmu-db/bustub)和Stanford CS346课程的[RedBase](https://web.stanford.edu/class/cs346/2015/redbase.html)以及中国人民大学的[RucBase](https://github.com/ruc-deke/rucbase-lab)。
+UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参考借鉴了CMU15-445课程的[BusTub](https://github.com/cmu-db/bustub)和Stanford CS346课程的[RedBase](https://web.stanford.edu/class/cs346/2015/redbase.html)。
 
 ## :hammer_and_wrench:推荐实验环境
 
@@ -35,6 +35,11 @@ UniBase是一个用于教学的简单RDBMS原型系统，实验框架代码参�
 以下内容是每届同学的一些贡献，特此收录
 
 - [快捷克隆并启动docker容器脚本](./misc/quick-start.bat) - Contributed by 敖翔, 2022
+
+## Framework Imporovement Plan
+
+- May, 2025: Refactor this base framework
+- June, 2025: Update all documentations
 
 ## Acknowledgement
 
